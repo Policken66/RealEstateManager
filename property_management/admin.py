@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import PropertyListing, ViewingRequest, RentalAgreement
 
-# Register your models here.
+admin.site.register(PropertyListing)
+admin.site.register(ViewingRequest)
+admin.site.register(RentalAgreement)
+

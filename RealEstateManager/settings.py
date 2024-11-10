@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users',
+    'property_management',
 ]
 
 # Указываем Django, что мы используем кастомную модель пользователя
