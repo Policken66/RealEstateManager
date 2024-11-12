@@ -1,0 +1,10 @@
+<!-- property_management/templates/property_management/catalog.html -->
+<h1>Каталог объектов недвижимости</h1>
+
+<ul>
+    {% for listing in listings %}
+    <li>
+        <a href="{% url 'property_detail' property_id=listing.id %}">{{ listing.property_type }} - {{ listing.location }}</a>
+    </li>
+    {% endfor %}
+</ul>

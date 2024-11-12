@@ -1,0 +1,13 @@
+<!-- property_management/templates/property_management/rental_agreement.html -->
+<h1>Договор аренды: {{ property_listing.property_type }} - {{ property_listing.location }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="start_date">Дата начала аренды:</label>
+    <input type="date" name="start_date" required>
+    
+    <label for="end_date">Дата окончания аренды:</label>
+    <input type="date" name="end_date" required>
+    
+    <button type="submit">Заключить договор</button>
+</form>
