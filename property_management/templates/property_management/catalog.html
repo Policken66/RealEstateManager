@@ -1,10 +1,17 @@
-<!-- property_management/templates/property_management/catalog.html -->
-<h1>Каталог объектов недвижимости</h1>
+{% extends 'property_management/base_generic.html' %}
 
-<ul>
-    {% for listing in listings %}
-    <li>
-        <a href="{% url 'property_detail' property_id=listing.id %}">{{ listing.property_type }} - {{ listing.location }}</a>
-    </li>
-    {% endfor %}
-</ul>
+{% block title %}Каталог недвижимости{% endblock %}
+
+{% block content %}
+    <h1>Каталог недвижимости</h1>
+    <ul>
+        {% for property in properties %}
+            <li>
+                <a href="{% url 'property_management:property_detail' property.id %}">{{ property.title }}</a>
+                - {{ property.price }} ₽
+            </li>
+        {% empty %}
+            <li>Нет объектов для отображения.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

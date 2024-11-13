@@ -1,0 +1,6 @@
+venv/
+users/__pycache__/
+property_management/__pycache__/
+RealEstateManager/__pycache__/
+*.pyc
+.DS_Store

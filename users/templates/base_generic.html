@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}RealEstateManager{% endblock %}</title>
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'property_management:home' %}">Главная</a></li>
+                <li><a href="{% url 'property_management:property_list' %}">Список объектов</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:logout' %}">Выйти</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">Войти</a></li>
+                    <li><a href="{% url 'users:register' %}">Регистрация</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 RealEstateManager. Все права защищены.</p>
+    </footer>
+</body>
+</html>

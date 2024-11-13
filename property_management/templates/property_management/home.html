@@ -1,0 +1,9 @@
+{% extends 'property_management/base_generic.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать в RealEstateManager!</h1>
+    <p>Управляйте своей недвижимостью с нами.</p>
+    <p><a href="{% url 'property_management:property_list' %}">Посмотреть объекты</a></p>
+{% endblock %}

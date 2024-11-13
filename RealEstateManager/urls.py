@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls), #Админка
     path('', include('property_management.urls')), #Маршруты для property_management
+    path('users/', include('users.urls')), # Маршруты для users (регистрация и авторизация)
 ]

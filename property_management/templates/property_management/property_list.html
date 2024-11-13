@@ -1,0 +1,20 @@
+{% extends 'property_management/base_generic.html' %}
+
+{% block title %}Список объектов{% endblock %}
+
+{% block content %}
+    <h1>Список объектов недвижимости</h1>
+    <ul>
+        {% for property in properties %}
+            <li>
+                <strong>{{ property.property_type }} в {{ property.location }}</strong><br>
+                Описание: {{ property.description }}<br>
+                Площадь: {{ property.area }} кв.м<br>
+                Цена: {{ property.price }} руб.<br>
+                <a href="{% url 'property_management:property_detail' property.id %}">Подробнее</a>
+            </li>
+        {% empty %}
+            <li>Нет объектов для отображения.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

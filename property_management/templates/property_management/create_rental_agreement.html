@@ -1,0 +1,12 @@
+{% extends 'property_management/base_generic.html' %}
+
+{% block title %}Создание договора аренды{% endblock %}
+
+{% block content %}
+    <h1>Создать договор аренды</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- users/templates/users/logout.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Вы вышли из аккаунта.</h2>
+<form action="{% url 'users:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
+<a href="{% url 'users:login' %}">Войти снова</a>
+{% endblock %}

@@ -1,13 +1,11 @@
-<!-- property_management/templates/property_management/rental_agreement.html -->
-<h1>Договор аренды: {{ property_listing.property_type }} - {{ property_listing.location }}</h1>
+{% extends 'property_management/base_generic.html' %}
 
-<form method="POST">
-    {% csrf_token %}
-    <label for="start_date">Дата начала аренды:</label>
-    <input type="date" name="start_date" required>
-    
-    <label for="end_date">Дата окончания аренды:</label>
-    <input type="date" name="end_date" required>
-    
-    <button type="submit">Заключить договор</button>
-</form>
+{% block title %}Договор аренды{% endblock %}
+
+{% block content %}
+    <h1>Договор аренды</h1>
+    <p>Объект: {{ rental_agreement.property.title }}</p>
+    <p>Клиент: {{ rental_agreement.client.username }}</p>
+    <p>Дата начала: {{ rental_agreement.start_date }}</p>
+    <p>Дата окончания: {{ rental_agreement.end_date }}</p>
+{% endblock %}

@@ -1,14 +1,10 @@
-<!-- property_management/templates/property_management/property_detail.html -->
-<h1>{{ property_listing.property_type }} - {{ property_listing.location }}</h1>
-<p><strong>Площадь:</strong> {{ property_listing.area }} кв.м</p>
-<p><strong>Цена:</strong> {{ property_listing.price }} руб.</p>
-<p><strong>Описание:</strong> {{ property_listing.description }}</p>
-<p><strong>Статус:</strong> {{ property_listing.get_status_display }}</p>
+{% extends 'property_management/base_generic.html' %}
 
-<!-- Форма запроса на просмотр -->
-<form method="POST">
-    {% csrf_token %}
-    <label for="requested_date">Дата просмотра:</label>
-    <input type="date" name="requested_date" required>
-    <button type="submit">Отправить запрос</button>
-</form>
+{% block title %}{{ property.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ property.title }}</h1>
+    <p>Цена: {{ property.price }} ₽</p>
+    <p>Адрес: {{ property.address }}</p>
+    <p>{{ property.description }}</p>
+{% endblock %}
