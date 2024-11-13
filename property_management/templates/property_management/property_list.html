@@ -11,7 +11,8 @@
                 Описание: {{ property.description }}<br>
                 Площадь: {{ property.area }} кв.м<br>
                 Цена: {{ property.price }} руб.<br>
-                <a href="{% url 'property_management:property_detail' property.id %}">Подробнее</a>
+                <a href="{% url 'property_management:property_detail' property.id %}">Подробнее</a><br>
+                <a href="{% url 'property_management:viewing_request' property.id %}">Запросить просмотр</a><br>
             </li>
         {% empty %}
             <li>Нет объектов для отображения.</li>

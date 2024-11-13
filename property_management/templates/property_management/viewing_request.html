@@ -1,17 +1,15 @@
 {% extends 'property_management/base_generic.html' %}
 
-{% block title %}Запросы на просмотр{% endblock %}
-
 {% block content %}
-    <h1>Запросы на просмотр</h1>
-    <ul>
-        {% for request in requests %}
-            <li>
-                Объект: {{ request.property.title }} — Дата: {{ request.date }}
-                <a href="{% url 'property_management:approve_request' request.id %}">Одобрить</a>
-            </li>
-        {% empty %}
-            <li>Нет запросов на просмотр.</li>
-        {% endfor %}
-    </ul>
+  <h2>Запрос на просмотр объекта: {{ property_listing.title }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="requested_date">Выберите дату просмотра:</label>
+    <input type="date" name="requested_date" id="requested_date" required>
+
+    <button type="submit">Отправить запрос</button>
+  </form>
+
+  <a href="{% url 'property_management:property_list' %}">Вернуться к списку объектов</a>
 {% endblock %}

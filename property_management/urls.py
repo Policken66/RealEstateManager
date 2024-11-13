@@ -22,4 +22,8 @@ urlpatterns = [
     path('property/<int:property_id>/rent/', views.create_rental_agreement, name='create_rental_agreement'),
 
     path('property_list/', views.property_list, name='property_list'),
+
+    path('properties/<int:property_id>/request_viewing/', views.viewing_request, name='viewing_request'),
+
+    path('my_viewing_requests/', views.viewing_requests_list, name='my_viewing_requests'),
 ]

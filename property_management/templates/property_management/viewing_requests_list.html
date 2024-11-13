@@ -1,0 +1,17 @@
+{% extends 'property_management/base_generic.html' %}
+
+{% block content %}
+  <h1>Мои запросы на просмотр</h1>
+  
+  {% if viewing_requests %}
+    <ul>
+      {% for request in viewing_requests %}
+        <li>
+          {{ request.property_listing }} — {{ request.requested_date }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Запросов на просмотр пока нет.</p>
+  {% endif %}
+{% endblock %}

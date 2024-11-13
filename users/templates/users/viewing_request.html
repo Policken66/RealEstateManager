@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Запрос на просмотр</h2>
+  <p>Вы хотите просмотреть объект: {{ property.title }}</p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить запрос</button>
+  </form>
+{% endblock %}

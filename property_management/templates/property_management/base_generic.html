@@ -20,6 +20,9 @@
                     <li><a href="{% url 'users:login' %}">Войти</a></li>
                     <li><a href="{% url 'users:register' %}">Регистрация</a></li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'property_management:my_viewing_requests' %}">Мои запросы</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import ViewingRequestForm, RentalAgreementForm
 from django.contrib import messages
+from django.http import HttpResponse
 
 # Главная страница
 def home(request):
@@ -26,13 +27,18 @@ def viewing_request(request, property_id):
     
     if request.method == 'POST':
         requested_date = request.POST.get('requested_date')
-        ViewingRequest.objects.create(
-            property_listing=property_listing,
-            client=request.user,
-            requested_date=requested_date
-        )
-        return HttpResponseRedirect(reverse('catalog'))  # Перенаправляем на каталог после отправки запроса
-    
+        # Проверка, что пользователь авторизован и можно создавать запрос
+        if request.user.is_authenticated:
+            # Создание нового запроса на просмотр
+            viewing_request = ViewingRequest.objects.create(
+                property_listing=property_listing,
+                client=request.user,
+                requested_date=requested_date
+            )
+            return HttpResponseRedirect(reverse('property_management:property_list'))
+        else:
+            return HttpResponse("You need to log in to make a viewing request.", status=403)
+
     return render(request, 'property_management/viewing_request.html', {'property_listing': property_listing})
 
 # Представление для заключения договора аренды
@@ -48,7 +54,7 @@ def rental_agreement(request, property_id):
             start_date=start_date,
             end_date=end_date
         )
-        return HttpResponseRedirect(reverse('catalog'))  # Перенаправляем на каталог после создания договора
+        return HttpResponseRedirect(reverse('property_management:property_list'))  # Перенаправляем на каталог после создания договора
     
     return render(request, 'property_management/rental_agreement.html', {'property_listing': property_listing})
 
@@ -93,3 +99,11 @@ def create_rental_agreement(request, property_id):
     else:
         form = RentalAgreementForm()
     return render(request, 'property_management/create_rental_agreement.html', {'property': property, 'form': form})
+
+# Отображение списка запросов на просмотр для авторизованного пользователя
+def viewing_requests_list(request):
+    if not request.user.is_authenticated:
+        return HttpResponse("Пожалуйста, войдите, чтобы просмотреть свои запросы.", status=403)
+    
+    viewing_requests = ViewingRequest.objects.filter(client=request.user)
+    return render(request, 'property_management/viewing_requests_list.html', {'viewing_requests': viewing_requests})
