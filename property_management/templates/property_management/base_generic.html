@@ -6,22 +6,20 @@
     {% load static %} 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}RealEstateManager{% endblock %}</title>
-   
 </head>
 <body>
     <header>
-        <nav>
+        <!-- Навигационная панель с голубым фоном и горизонтальными кнопками -->
+        <nav class="navbar">
             <ul>
                 <li><a href="{% url 'property_management:home' %}">Главная</a></li>
                 <li><a href="{% url 'property_management:property_list' %}">Список объектов</a></li>
                 {% if user.is_authenticated %}
+                    <li><a href="{% url 'property_management:my_viewing_requests' %}">Мои запросы</a></li>
                     <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                 {% else %}
                     <li><a href="{% url 'users:login' %}">Войти</a></li>
                     <li><a href="{% url 'users:register' %}">Регистрация</a></li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'property_management:my_viewing_requests' %}">Мои запросы</a></li>
                 {% endif %}
             </ul>
         </nav>

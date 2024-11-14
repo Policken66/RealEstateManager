@@ -8,7 +8,7 @@ class User(AbstractUser):
         ('admin', 'Администратор'),
         ('client', 'Клиент'),
     ]
-
+    
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='client')
 
     def __str__(self):

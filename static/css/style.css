@@ -1,21 +1,42 @@
 /* Основные стили для страницы */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+footer {
+    background-color: #000;  /* Черный фон */
+    color: #fff;  /* Белый текст */
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+footer p {
+    margin: 0; /* Убираем стандартные отступы у параграфа */
 }
 
 /* Стиль для заголовков */
 h1, h2, h3 {
-    color: #2f6de0;
+    color: #2d73cf;
     font-weight: normal;
 }
 
 /* Стилизация ссылок */
 a {
     text-decoration: none;
-    color: #3498db;
+    color: #2d73cf;
 }
 
 a:hover {
@@ -31,7 +52,7 @@ a:hover {
 
 /* Кнопки */
 button {
-    background-color: #3498db;
+    background-color: #2d73cf;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -46,14 +67,17 @@ button:hover {
 
 /* Форма */
 form {
+    max-width: 400px; /* Ограничиваем максимальную ширину */
     background-color: #fff;
+    margin: 0 auto;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -61,7 +85,7 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 
 input[type="submit"] {
-    background-color: #3498db;
+    background-color: #2d73cf;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -71,7 +95,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #2d73cf;
 }
 
 /* Стили для карточек недвижимости */
@@ -95,3 +119,34 @@ input[type="submit"]:hover {
     margin-top: 10px;
     color: #333;
 }
+
+/* Стили для верхней панели навигации */
+.navbar {
+    background-color: #2d73cf; /* Голубой цвет фона */
+    padding: 30px 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.navbar a {
+    color: black; /* Черный текст */
+    background-color: white; /* Белый фон кнопок */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background-color: #e0e0e0; /* Цвет кнопки при наведении */
+}   
